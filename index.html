@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anki</title>
+    <link rel="stylesheet" href="srcs/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="overly"></div>
+    <header class="header">
+        <div class="headerWraper">
+            <div class="logo">
+                Anki <i class="fa-brands fa-blogger"></i>
+            </div>
+            <button id="ShowSidebar"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="header_middle">
+                <ul>
+                    <li><button class="active">Decks</button></li>
+                    <li><button class="addBtn"><i class="fa-solid fa-plus"></i>Add</button></li>
+                    <li>
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <div class="MenuAll">
+                            <div id="searchMenu"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="header_right">
+                <div class="con-2-wrap">
+                    <button id="themeToggle"><i class="fa-solid fa-sun"></i></button>
+                    <button id="sidebarToggleBtn"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <aside id="sidebar">
+        <div class="sidebar_header">
+            <div class="sidebar_logo">
+                <div class="logo">
+                    Anki <i class="fa-brands fa-blogger"></i>
+                </div>
+                <div>
+                    <button id="CloseSidebar"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button id="CloseSidebar2"><i class="fa-solid fa-chevron-left"></i></button>
+                </div>
+            </div>
+            <div class="profile-info">
+                <div class="profile-info-wraper">
+                    <div class="showDucksLength">
+                        Ducks <span id="ShowDuckLength">10</span>
+                    </div>
+                    <button id="startLearnBtn">Start</button>
+                </div>
+            </div>
+        </div>
+        <div class="row-hr-h1"></div>
+        <div class="sidebar_main">
+            <ul id="sidebarBtns">
+                <li><button class="select"><i class="fa-solid fa-tent"></i>Home</button></li>
+                <li><button><i class="fa-solid fa-diagram-predecessor"></i>Decks</button></li>
+                <li><button><i class="fa-solid fa-graduation-cap"></i>Learning</button></li>
+                <li><button><i class="fa-solid fa-book-open"></i>Notes</button></li>
+            </ul>
+        </div>
+        <div class="sidebar_footer"></div>
+    </aside>
+    <main class="main">
+        <div class="duecks">
+                <div class="deck_head">
+                    <div class="deck_head_left">
+                        <i class="fa-solid fa-diagram-predecessor"></i>Decks
+                    </div>
+                    <div class="deck_head_right">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
+                <div class="row-hr-h1-c2"></div>
+            <div id="Alldecks">
+                <div class="deck">
+                    <div class="deck_number">
+                        <span>1</span>
+                    </div>
+                    <div class="deck_main">
+                        <button class="deckName">Computer</button>
+                    <div class="deckInfo">
+                        <div class="showDeckLenegth">deck<span class="showDeckLen">10</span></div>
+                        <div class="config_deck">
+                            <button><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="deck">
+                    <div class="deck_number">
+                        <span>2</span>
+                    </div>
+                    <div class="deck_main">
+                        <button class="deckName">Computer</button>
+                    <div class="deckInfo">
+                        <div class="showDeckLenegth">deck<span class="showDeckLen">10</span></div>
+                        <div class="config_deck">
+                            <button><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="deck">
+                    <div class="deck_number">
+                        <span>3</span>
+                    </div>
+                    <div class="deck_main">
+                        <button class="deckName">Computer</button>
+                    <div class="deckInfo">
+                        <div class="showDeckLenegth">deck<span class="showDeckLen">10</span></div>
+                        <div class="config_deck">
+                            <button><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"></footer>
+    <script type="module" src="srcs/js/app.js"></script>
+</body>
+</html>

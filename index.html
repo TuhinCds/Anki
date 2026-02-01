@@ -17,8 +17,8 @@
             <button id="ShowSidebar"><i class="fa-solid fa-chevron-right"></i></button>
             <div class="header_middle">
                 <ul>
-                    <li><button class="active">Decks</button></li>
-                    <li><button class="addBtn"><i class="fa-solid fa-plus"></i>Add</button></li>
+                    <li><button class="active" id="ShowDecks">Decks</button></li>
+                    <li><button class="addBtn" id="AddNewBtn"><i class="fa-solid fa-plus"></i>Add</button></li>
                     <li>
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
                         <div class="MenuAll">
@@ -58,8 +58,8 @@
         <div class="row-hr-h1"></div>
         <div class="sidebar_main">
             <ul id="sidebarBtns">
-                <li><button class="select"><i class="fa-solid fa-tent"></i>Home</button></li>
-                <li><button><i class="fa-solid fa-diagram-predecessor"></i>Decks</button></li>
+                <li><button><i class="fa-solid fa-tent"></i>Home</button></li>
+                <li><button class="select"><i class="fa-solid fa-diagram-predecessor"></i>Decks</button></li>
                 <li><button><i class="fa-solid fa-graduation-cap"></i>Learning</button></li>
                 <li><button><i class="fa-solid fa-book-open"></i>Notes</button></li>
             </ul>
@@ -67,7 +67,8 @@
         <div class="sidebar_footer"></div>
     </aside>
     <main class="main">
-        <div class="duecks height0">
+        <div class="decksSection">
+        <div class="duecks">
                 <div class="deck_head">
                     <div class="deck_head_left">
                         <i class="fa-solid fa-diagram-predecessor"></i>Decks
@@ -78,33 +79,60 @@
                 </div>
                 <div class="row-hr-h1-c2"></div>
             <div id="Alldecks">
-                <div class="deck">
-                    <div class="deck_number">
-                        <span>1 </span>
+
+            </div>
+            <div class="emptyDecks height0">
+                <div class="emptyDeckContainer">
+                    <div class="showEmptyIcon"><i class="fa-solid fa-box-open"></i></div>
+                    <div class="emtpyText">
+                        <p>You don't have decks</p>
+                        <p>is you create decks so click create new deck button </p>
                     </div>
-                    <div class="deck_main">
-                        <div class="deckName">Computer</div>
-                    <div class="deckInfo">
-                        <div class="showDeckLenegth">deck<span class="showDeckLen">10</span></div>
-                        <div class="config_deck">
-                            <button class="deckActionBtn"><i class="fa-solid fa-ellipsis"></i></button>
-                            <div class="deckActionMenu">
-                                <div class="deckActionMenuHead"></div>
-                                <div class="deckConfigBtns">
-                                    <button><i class="fa-regular fa-pen-to-square"></i>Edit deck</button>
-                                    <button><i class="fa-solid fa-plus"></i>Add deck</button>
-                                    <div class="row-hr-h1 c10"></div>
-                                    <button><i class="fa-regular fa-trash-can"></i>Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="emptyBtns">
+                        <button id="CreateDecksBtn"><i class="fa-solid fa-plus"></i>Create new deck</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="addDeckContainer">
-            dfff
+        <div class="addDeckSection height0">
+            <div class="addDeckSectionHead">Create deck</div>
+            <div class="AdddeckCon">
+               <div class="inputsData">
+                 <div class="main_inputs">
+                    <div class="InputType">
+                    <span>Type</span>
+                    <div class="input inputG">
+                        <input type="text" name="list" id="InputTypeData">
+                        <div id="typeShow">
+                            <button>Basic</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="deckInput">
+                    <span>Deck</span>
+                    <div class="deckIn inputG">
+                        <input type="text" id="InputDeck" autocomplete="false">
+                        <div id="deckSet">
+                            
+                        </div>
+                    </div>
+                </div>
+                 </div>
+                <div class="frontAndBackContainer">
+                    <div class="frontInput">
+                        <input type="text" id="InputFront" placeholder="Front">
+                    </div>
+                    <div class="row-hr-h1 c3"></div>
+                    <div class="backInput">
+                        <input type="text" id="InputBack" placeholder="Back">
+                    </div>
+                </div>
+                </div>
+                <div class="addDeckBtncon">
+                    <button id="addDeckBtn"><i class="fa-solid fa-plus"></i>Add</button>
+                </div>
+            </div>
+        </div>
         </div>
     </main>
     <footer class="footer"></footer>

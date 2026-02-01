@@ -7,6 +7,7 @@
     --bg-color-90: rgb(18, 18, 18);
     --bg-color-80: rgb(35, 35, 35);
     --bg-color-70: rgb(58, 58, 58);
+    --bg-color-tra-50: rgba(252, 252, 252, 0.091);
     --text-color: rgb(255, 255, 255);
     --text-color-70: rgb(229, 229, 229);
     --text-color-60: rgb(202, 202, 202);
@@ -24,6 +25,7 @@
     --bg-color-90: rgb(232, 232, 232);
     --bg-color-80: rgb(227, 227, 227);
     --bg-color-70: rgb(203, 203, 203);
+    --bg-color-tra-50: rgba(124, 124, 124, 0.182);
     --text-color: rgb(0, 0, 0);
     --text-color-70: rgb(31, 31, 31);
     --text-color-60: rgb(53, 53, 53);
@@ -71,6 +73,7 @@ body.closeSidebar {
     top: 0;
     padding: 0 10px;
     padding-top: 7px; 
+    z-index: 999;
 }
 .main {
     grid-area: main;
@@ -333,7 +336,7 @@ body.closeSidebar {
     height: .8px;
     width: 90%;
     max-width: 700px;
-    background: rgba(255, 253, 253, 0.17);
+    background: var(--bg-color-80);
     margin: 16px 0;
 }
 
@@ -494,7 +497,6 @@ body.closeSidebar {
     border-radius: 10px;
     z-index: 999;
     padding: 12px;
-    box-shadow: 2px 4px 30px var(--bg-color-80);
     transform: scale(0);
     opacity: 0;
     transition: transform .3s, opacity .4s !important;
@@ -533,11 +535,303 @@ body.closeSidebar {
     color: var(--text-color);
 }
 .height0 {
-    height: 0;
-    padding: 0;
-    overflow: hidden;
+    height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+.addDeckSection {
+    width: 100%;
+    height: calc(100vh - (var(--header-height) + var(--footer-height)));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.AdddeckCon {
+    padding: 10px;
+    width: 85%;
+    max-width: 500px;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: calc(100% - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.inputsData  {
+    padding: 4px;
+}
+.InputType {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.input {
+    width: 100%;
+}
+#typeShow {
+    position: absolute;
 }
 
+.deckInput span, .InputType span {
+    position: absolute;
+    top: -10px !important;
+    font-size: .8rem;
+    background: var(--bg-color);
+    padding: 0 10px;
+    left: 14px;
+    color: var(--text-color-50);
+    z-index: 2;
+    border-radius: 100px;
+}
+.input input {
+    width: 100%;
+}
+.deckInput {
+    position: relative;
+}
+.deckInput span {
+    top: 10px;
+}
+.inputG {
+    position: relative;
+    width: 100%;
+}
+.inputG input {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: var(--bg-color-tra-50);
+    outline: none;
+    color: var(--text-color)
+}
+.inputG input:focus {
+    border: 1px solid var(--text-color-50);
+    background: transparent;
+}
+.inputsData {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+
+}
+#typeShow {
+    background: var(--bg-color-80);
+    width:  100%;
+    overflow-y: auto;
+    z-index: 99;
+    height: 10vh;
+    max-height: 50vh;
+    border-radius: 10px;
+    top: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .3s, opacity .4s !important;
+}
+#typeShow.show {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+}
+#typeShow button {
+    padding: 10px;
+    border: none;
+    background: var(--bg-color-70);
+    color: var(--text-color);
+    text-align: start;
+}
+#deckSet {
+    position: absolute;
+    background: var(--bg-color-80);
+    width:  100%;
+    overflow-y: auto;
+    z-index: 99;
+    min-height: 10vh;
+    max-height: max-content;
+    border-radius: 10px;
+    top: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .3s, opacity .4s !important;
+}
+#deckSet.show {
+    transform: scale(1);
+    opacity: 1;
+}
+#deckSet button {
+    padding: 10px;
+    border: none;
+    background: var(--bg-color-70);
+    color: var(--text-color);
+    text-align: start;
+}
+.frontInput {
+    position: relative;
+}
+.backInput {
+    position: relative;
+}
+.backInput span , .frontInput span{
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    color: var(--text-color-50);
+    background: var(--bg-color);
+    padding: 0 10px;
+    font-size: .8rem;
+    border-radius: 1000px;
+}
+
+.frontInput input, .backInput input {
+    padding: 16px 13px;
+    width: 100%;
+    border: 1px solid transparent;
+    background: var(--bg-color-tra-50) !important;
+    outline: none;
+    color: var(--text-color)
+}
+.frontInput input:focus, .backInput input:focus {
+    border: 1px solid var(--text-color-50);
+    background: transparent !important;
+}
+.frontAndBackContainer {
+    background: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.frontInput input {
+    border-radius: 20px 20px 5px 5px;
+}
+
+.backInput input {
+    border-radius: 5px 5px 20px 20px;
+}
+.addDeckBtncon {
+    width: 100%;
+    padding: 4px;
+}
+.addDeckBtncon button {
+    padding: 13px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: var(--text-color-70);
+    color: var(--bg-color-80);
+    font-weight: bold;
+}
+.main_inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.main_inputs .InputType input{
+    border-radius: 15px 15px 5px 5px;
+}
+
+.main_inputs .deckInput input{
+    border-radius: 5px 5px 15px 15px;
+}
+
+.emptyDecks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 270px);
+}
+
+.showEmptyIcon {
+    font-size: 4.7rem;
+    color: var(--text-color-80);
+    transform: rotate(0deg);
+    animation: rotatedDix 7s infinite;
+}
+@keyframes rotatedDix {
+    0% {
+        transform: rotate(-30deg);
+    } 50% {
+        transform: rotate(30deg);
+    } 100% {
+        transform: rotate(-30deg);
+    }
+}
+.emptyDeckContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.emtpyText {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+    margin: 15px 0;
+}
+.emtpyText p {
+    width: 87%;
+    text-align: center;
+}
+.emtpyText p:first-child {
+    font-size: .96rem;
+    font-weight: 540;
+}
+.emtpyText p:last-child {
+    font-size: .9rem;
+    color: var(--text-color-60);
+}
+.emptyBtns button {
+    padding: 14px 17px;
+    border: none;
+    border: none;
+    background: var(--bg-color-tra-50);
+    border-radius: 1000px;
+    color: var(--text-color-80);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.error {
+    border: 1px solid rgb(214, 0, 0) !important;
+    color: rgb(225, 0, 0) !important;
+}
+#addDeckBtn {
+    cursor: pointer;
+}
+#deckSet {
+    gap: 0;
+}
+#deckSet button{
+    background: var(--bg-color-80);
+    border-bottom: 1px solid var(--bg-color-90);
+    padding: 15px 17px;
+    cursor: pointer;
+}
+#deckSet button:hover {
+    background: var(--bg-color-70);
+}
+.deckActionBtn {
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+#CreateDecksBtn {
+    cursor: pointer;
+}
+#CreateDecksBtn:hover {
+    background: var(--bg-color-80);
+}
+.row-hr-h1.c3 {
+    display: none;
+}
 
 
 
@@ -564,6 +858,55 @@ body.closeSidebar {
     .deck_main {
         background: var(--bg-color-90);
     }
+    .backInput span , .frontInput span{
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    color: var(--text-color-50);
+    background: var(--bg-color);
+    padding: 0 10px;
+    font-size: .8rem;
+    border-radius: 1000px;
+}
+.backInput span {
+     top: 0px;
+}
+.frontInput input, .backInput input {
+    padding: 18px 13px;
+    width: 100%;
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 10px !important;
+    color: var(--text-color);
+    background: transparent !important;
+}
+
+
+.row-hr-h1.c3 {
+    width: 100%;
+    height: .8px;
+    background: var(--bg-color-90);
+    display: block;
+}
+.frontInput input:focus, .backInput input:focus {
+    border: 1px solid var(--text-color-50);
+    background: transparent !important;
+    border-radius: 10px !important;
+}
+.frontAndBackContainer {
+    background: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.frontInput input {
+    border-radius: 20px 20px 5px 5px;
+}
+
+.backInput input {
+    border-radius: 5px 5px 20px 20px;
+}
 }
 
 

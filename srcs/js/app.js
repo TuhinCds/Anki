@@ -12,7 +12,7 @@ const headerWraperLogo = document.querySelector(".headerWraper .logo")
 const ShowSidebar = document.getElementById("ShowSidebar")
 
 
-// overly 
+// overly
 const overly = document.getElementById("overly")
 
 

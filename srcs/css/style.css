@@ -11,6 +11,9 @@
     --text-color-70: rgb(229, 229, 229);
     --text-color-60: rgb(202, 202, 202);
     --text-color-50: rgb(152, 152, 152);
+    --text-color-40: rgb(125, 125, 125);
+    --text-color-30: rgb(88, 88, 88);
+    --text-color-20: rgb(70, 70, 70);
     --header-height: 60px;
     --footer-height: 60px;
 
@@ -25,6 +28,9 @@
     --text-color-70: rgb(31, 31, 31);
     --text-color-60: rgb(53, 53, 53);
     --text-color-50: rgb(85, 85, 85);
+    --text-color-40: rgb(125, 125, 125);
+    --text-color-30: rgb(88, 88, 88);
+    --text-color-20: rgb(186, 186, 186);
 }
 *,
 *::after,
@@ -34,6 +40,7 @@
     box-sizing: border-box;
     transition: all .4s;
     -webkit-tap-highlight-color: transparent;
+    scrollbar-width: none;
 }
 body {
     width: 100%;
@@ -58,6 +65,12 @@ body.closeSidebar {
     background: var(--bg-color);
     display: flex;
     align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 0 10px;
+    padding-top: 7px; 
 }
 .main {
     grid-area: main;
@@ -407,6 +420,7 @@ body.closeSidebar {
     align-items: center;
     gap: 15px;
     border-radius: 3px;
+    cursor: pointer;
 
 }
 .deck_main {
@@ -417,6 +431,7 @@ body.closeSidebar {
     justify-content: space-between;
     padding: 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .deckInfo {
     display: flex;
@@ -465,6 +480,66 @@ body.closeSidebar {
     border: none;
     color: var(--text-color-70);
 }
+#Alldecks {
+    overflow-y: auto;
+}
+.config_deck {
+    position: relative;
+}
+.deckActionMenu {
+    position: absolute;
+    background: var(--bg-color-70);
+    width: 160px;
+    right: 0;
+    border-radius: 10px;
+    z-index: 999;
+    padding: 12px;
+    box-shadow: 2px 4px 30px var(--bg-color-80);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .3s, opacity .4s !important;
+}
+.deckActionMenu.show {
+    transform: scale(1);
+    opacity: 1;
+}
+.deckConfigBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.deckConfigBtns button {
+    display: flex;
+    width: 100%;
+    text-align: start;
+    gap: 3px;
+    font-size: .9rem;
+    cursor: pointer;
+    color: var(--text-color-70);
+}
+.deckConfigBtns button:last-child {
+    color: rgb(203, 0, 0);
+}
+.deckConfigBtns button:last-child:hover {
+    color: red;
+}
+.row-hr-h1.c10 {
+    background: var(--text-color-20);
+}   
+#Alldecks {
+    height: 100vh;
+}
+.deckConfigBtns button:hover {
+    color: var(--text-color);
+}
+.height0 {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+
 
 
 
@@ -486,7 +561,9 @@ body.closeSidebar {
     .header_right .con-2-wrap {
         border: 1px solid transparent;
     }
-    
+    .deck_main {
+        background: var(--bg-color-90);
+    }
 }
 
 

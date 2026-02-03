@@ -7,6 +7,7 @@
     --bg-color-90: rgb(18, 18, 18);
     --bg-color-80: rgb(35, 35, 35);
     --bg-color-70: rgb(58, 58, 58);
+    --bg-color-30: rgb(23, 23, 23);
     --bg-color-tra-50: rgba(252, 252, 252, 0.091);
     --text-color: rgb(255, 255, 255);
     --text-color-70: rgb(229, 229, 229);
@@ -17,6 +18,7 @@
     --text-color-20: rgb(70, 70, 70);
     --header-height: 60px;
     --footer-height: 60px;
+    
 
 }
 :root[data-theme="light"] {
@@ -71,9 +73,9 @@ body.closeSidebar {
     left: 0;
     right: 0;
     top: 0;
-    padding: 0 10px;
-    padding-top: 7px; 
+    padding: 6px 10px;
     z-index: 999;
+    border-bottom: .4px solid var(--bg-color-80);
 }
 .main {
     grid-area: main;
@@ -146,7 +148,7 @@ body.closeSidebar {
     display: flex;
     align-items: center;
     border-radius: 100px;
-    border: 1px solid var(--bg-color-90);
+    border: 1px solid transparent;
     padding: .5px 1px !important;
 }
 
@@ -332,13 +334,7 @@ body.closeSidebar {
     height: .8px;
     background: rgba(255, 253, 253, 0.025);
 }
-.row-hr-h1-c2 {
-    height: .8px;
-    width: 90%;
-    max-width: 700px;
-    background: var(--bg-color-80);
-    margin: 16px 0;
-}
+
 
 #sidebar.close {
     transform: translateX(-100%);
@@ -747,6 +743,7 @@ body.closeSidebar {
     justify-content: center;
     width: 100%;
     height: calc(100% - 270px);
+    overflow: hidden !important;
 }
 
 .showEmptyIcon {
@@ -832,6 +829,151 @@ body.closeSidebar {
 .row-hr-h1.c3 {
     display: none;
 }
+.deck_head_right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.SearchContainer {
+    display: flex;
+    align-items: center;
+    background: var(--bg-color-80);
+    border-radius: 1000px;
+    overflow: hidden;
+    width: 270px;
+}
+.searchdivition {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+.SearchContainer input {
+    padding: 13px 15px;
+    border: none;
+    width: 100%;
+    background: transparent;
+    color: var(--text-color-80);
+    outline: none;
+}
+.searchdivition button {
+    padding: 3px;
+    margin-right: 10px;
+    color: var(--text-color-70);
+    background: transparent;
+    cursor: pointer;
+    scale: 0;
+    transition: scale .1s  ease-in !important;
+}
+.SearchContainer {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity .3s , transform .0s  ease-out !important;
+}
+.SearchContainer.show {
+    opacity: 1;
+    transform: scale(1);  
+}
+.deck_head_right_btns {
+    display: flex;
+    align-items: center;
+    gap: 16px !important;
+}
+.deck_head_right_btns .btn.filter {
+    background: var(--bg-color-90) !important;
+    width: 43px;
+    height: 43px;
+    border-radius: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.deck_head_left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.deck_head {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 23px;
+}
+#SearchDeckBtn {
+    font-size: 1.03rem;
+    cursor: pointer;
+}
+#SearchDeckBtn:hover {
+    color: var(--text-color);
+}
+.row-hr-h1-c2CW{
+    height: .8px;
+    width: 90%;
+    max-width: 700px;
+    background: transparent;
+    margin: 16px 0;
+}
+.row-hr-h1-c2CW.withItem {
+    height: .8px;
+    width: 90%;
+    max-width: 700px;
+    background: var(--bg-color-80) !important;
+    margin: 16px 0;
+}
+.deckName {
+    font-size: .9rem !important;
+}
+.deckSet {
+    background: red;
+}
+.deckContentCon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#show_decks_element {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - (var(--header-height)));
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+}
+.show_decks_element_head {
+    margin-top: 50px;
+}
+.show_decks_element_footer {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: red;
+}
+.show_decks_element_btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.showContentCount {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.actionFromUsers {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.actionFromUsers button {
+    padding: 5px 17px;
+}
+.actionFromUserscontainer {
+    background: blue;
+}
 
 
 
@@ -906,6 +1048,12 @@ body.closeSidebar {
 
 .backInput input {
     border-radius: 5px 5px 20px 20px;
+}
+.SearchContainer {
+    width: 200px;
+}
+.header {
+    border-bottom: .8px solid var(--bg-color-90) !important;
 }
 }
 

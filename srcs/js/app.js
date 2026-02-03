@@ -1,3 +1,8 @@
+import {UserActionData} from "./data.js"
+
+const actionFromUsers = document.querySelector(".actionFromUsers")
+
+
 const themeToggle = document.getElementById("themeToggle")
 const root = document.documentElement
 
@@ -49,6 +54,18 @@ const emptyDecks = document.querySelector(".emptyDecks")
 // empty 
 const CreateDecksBtn = document.getElementById("CreateDecksBtn")
 
+
+
+// .row-hr-h1-c2
+
+const RowHP8 = document.querySelector(".row-hr-h1-c2CW")
+
+
+// search 
+const SearchDeckBtn = document.getElementById("SearchDeckBtn")
+const SearchContainer = document.querySelector(".SearchContainer")
+const SearchDecksRemoveText = SearchContainer.querySelector(".searchdivition button")
+const SearchDecksInput = SearchContainer.querySelector(".searchdivition input")
 
 
 let savedTheme = localStorage.getItem("theme")
@@ -170,6 +187,8 @@ if (Savedsection) {
     ShowSection(Savedsection)
 }
 
+let activeBtn = parseInt(localStorage.getItem("activeBtn")) || 0
+
 function ShowSection(sectionName) {
     switch (sectionName) {
         case "ShowDeck":
@@ -181,9 +200,16 @@ function ShowSection(sectionName) {
             duecks.classList.add("height0")
             addDeckSection.classList.remove("height0") 
             localStorage.setItem("section", sectionName)
+            header_middle_allBtns.forEach(allBtnL => allBtnL.classList.remove("active"))
+            header_middle_allBtns[1].classList.add("active")
+            localStorage.setItem("activeBtn", 1)
+            break
+        case "ShowDeckElement":
+            
             break
     }
 }
+
 
 header_middle_allBtns.forEach((btn, index) => {
     btn.addEventListener("click", () => {
@@ -195,15 +221,17 @@ header_middle_allBtns.forEach((btn, index) => {
     })
 })
 
-let activeBtn = parseInt(localStorage.getItem("activeBtn")) || 0
-header_middle_allBtns.forEach((btn, index) => {
+ShowClickedHeaderBtns()
+function ShowClickedHeaderBtns() {
+    header_middle_allBtns.forEach((btn, index) => {
     if (activeBtn === index) {
         btn.classList.add("active")
     } else {
         btn.classList.remove("active")
-    }
+    } 
 
 })
+}
 
 document.addEventListener("click", (e) => {
     if (!e.target.closest("#InputTypeData") && !e.target.closest("#typeShow")) {
@@ -294,7 +322,7 @@ function AddDeckData() {
     
     localStorage.setItem("Decks", JSON.stringify(Decks))
     ShowDeckInnerDox(Decks)
-
+  
 
     InputTypeData.value = ""
     InputFront.value = ""
@@ -314,7 +342,7 @@ function ShowDeckInnerDox(decks) {
                         <span>${index + 1}</span>
                     </div>
                     <div class="deck_main">
-                        <div class="deckName">${keys}</div>
+                        <div class="deckName">${keys.length > 15 ? keys.slice(0, 10) + " ..." : keys}</div>
                     <div class="deckInfo">
                         <div class="showDeckLenegth">deck<span class="showDeckLen">${decks[keys].length}</span></div>
                         <div class="config_deck">
@@ -322,8 +350,8 @@ function ShowDeckInnerDox(decks) {
                             <div class="deckActionMenu">
                                 <div class="deckActionMenuHead"></div>
                                 <div class="deckConfigBtns">
-                                    <button><i class="fa-regular fa-pen-to-square"></i>Edit deck</button>
-                                    <button><i class="fa-solid fa-plus"></i>Add deck</button>
+                                    <button><i class="fa-regular fa-pen-to-square"></i>Rename</button>
+                                    <button><i class="fa-solid fa-plus"></i>Add</button>
                                     <div class="row-hr-h1 c10"></div>
                                     <button class="deleteDeck" data-name="${keys}"><i class="fa-regular fa-trash-can"></i>Delete</button>
                                 </div>
@@ -341,9 +369,16 @@ function ShowDeckInnerDox(decks) {
 
             
 
-
+             
             // deckActionBtn
     })
+
+     if (Object.keys(decks).length < 1) {
+        RowHP8.classList.remove("withItem")
+     } else {
+        RowHP8.classList.add("withItem")
+     }
+     ShowEmptyDecks(decks)
 }
 
 
@@ -362,8 +397,23 @@ function ShowDeckInnerDox(decks) {
         const Actionmenu = actionbtn.nextElementSibling
          deckActionMenuToggle(Actionmenu)
     } 
+    
 
     
+   })
+
+   document.addEventListener("click", (e) => {
+        if (!e.target.closest(".deckActionBtn") && !e.target.closest(".deckActionMenu")) {
+            Alldecks.querySelectorAll(".deckActionMenu").forEach(menu => menu.classList.remove("show"))
+        }
+
+        if (
+            !e.target.closest(".SearchContainer") &&
+            !e.target.closest(".searchDeckBtn")) 
+           {
+            SearchContainer.classList.remove("show")
+            SearchDeckBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`
+        }
    })
 
 
@@ -372,7 +422,6 @@ InputTypeData.addEventListener("click", () => {
 })
 
 InputDeck.addEventListener("click", () => {
-    console.log()
     if (Object.keys(Decks).length < 1) {
         HidedeckSet() 
     } else {
@@ -394,6 +443,11 @@ function deckActionMenuToggle(menu) {
         ActiveActionMenu = null
     }
     menu.classList.toggle("show")
+    if (menu.classList.contains("show")) {
+        ActiveActionMenu = menu
+    } else {
+        ActiveActionMenu = null
+    }
 
 }
 function HidedeckActionMenuToggle(menu) {
@@ -437,4 +491,74 @@ ShowEmptyDecks(Decks)
 
 CreateDecksBtn.addEventListener("click", () => {
     ShowSection("AddDeck")
+})
+
+
+function SearchDecks() {
+    let SearchDecksInputValue = SearchDecksInput.value.trim().toLowerCase()
+    let filterDecks = Object.entries(Decks).filter(([key, value]) => key.toLowerCase().includes(SearchDecksInputValue) || SearchDecksInputValue.includes(key))
+    if (filterDecks.length < 1) {
+        let searchLCount = {}
+        Object.entries(Decks).forEach(([key, value]) => {
+            for(let i = 0; i < SearchDecksInputValue.length; i++) {
+                for(let j = 0; j < key.length; j++) {
+                    if (SearchDecksInputValue[i] === key[j]) {
+                        searchLCount[key] = ++searchLCount[key] || 1
+                    }
+                }
+            }
+        })
+        let searchCountData = Object.values(searchLCount)
+        let max = searchCountData[0]
+
+        for(let u = 0; u < searchCountData.length; u++) {
+            if (searchCountData[u] > max) {
+                max = searchCountData[u]
+            }
+        }
+        let searchItemFound = Object.entries(searchLCount).filter(([key, value]) => value === max)[0][0]
+        let day = Object.entries(Decks).filter(([key, value]) => key === searchItemFound)
+        filterDecks = day
+    }
+    let DecksNew = Object.fromEntries(filterDecks)
+    console.log(DecksNew)
+
+    ShowDeckInnerDox(DecksNew)
+}
+SearchDeckBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
+    SearchContainer.classList.toggle("show")
+    if (SearchContainer.classList.contains("show")) {
+        SearchDeckBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass-minus"></i>`
+    } else {
+        SearchDeckBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`
+    }
+
+})
+SearchDecksRemoveText.addEventListener("click", () => {
+    SearchDecksInput.value = ""
+    EmptyInput()
+    ShowDeckInnerDox(Decks)
+})
+
+
+SearchDecksInput.addEventListener("input", () => {
+    SearchDecks()
+    EmptyInput()
+})
+
+function EmptyInput() {
+    let SearchDecksInputValue = SearchDecksInput.value.trim()
+      if (SearchDecksInputValue.length < 1) {
+        SearchDecksRemoveText.style.scale = "0"
+        SearchDecksInput.focus()
+      } else {
+        SearchDecksRemoveText.style.scale = "1"
+      }
+}
+UserActionData.UserActionTypes.forEach((btn, index) => {
+    let createBtn = document.createElement("button")
+    createBtn.classList.add("UserAction")
+    createBtn.innerHTML = `<div class="UserActionSignAgain">${btn.time}</div><div>${btn.type}</div>`
+    actionFromUsers.appendChild(createBtn)
 })

@@ -67,17 +67,26 @@
         <div class="sidebar_footer"></div>
     </aside>
     <main class="main">
-        <div class="decksSection">
+        <div class="decksSection height0">
         <div class="duecks">
                 <div class="deck_head">
                     <div class="deck_head_left">
                         <i class="fa-solid fa-diagram-predecessor"></i>Decks
                     </div>
                     <div class="deck_head_right">
-                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <div class="SearchContainer">
+                            <div class="searchdivition">
+                                <input type="text" placeholder="Search decks..">
+                                <button><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </div>
+                        <div class="deck_head_right_btns">
+                            <button class="btn filter"><i class="fa-solid fa-filter"></i></button>
+                            <button class="btn search searchDeckBtn" id="SearchDeckBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="row-hr-h1-c2"></div>
+                <div class="row-hr-h1-c2CW"></div>
             <div id="Alldecks">
 
             </div>
@@ -130,6 +139,30 @@
                 </div>
                 <div class="addDeckBtncon">
                     <button id="addDeckBtn"><i class="fa-solid fa-plus"></i>Add</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="deckContentCon">
+         <div id="show_decks_element" class="">
+            <div class="show_decks_element_head">
+                <div class="decksHead"></div>
+                <div class="showDeckItemsOnHead">
+                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                </div>
+            </div>
+            <div class="show_decks_element_main"></div>
+            <div class="show_decks_element_footer">
+                <div class="show_decks_element_btns">
+                    <div class="showContentCount">
+                        <div class="easyCount">12</div>
+                        <div class="hardCount">0</div>
+                        <div class="goodCount">2</div>
+                    </div>
+                    <button>Show anwser</button>
+                </div>
+                <div class="actionFromUserscontainer height0">
+                    <div class="actionFromUsers"></div>
                 </div>
             </div>
         </div>
